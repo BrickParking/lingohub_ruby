@@ -28,7 +28,7 @@ module Lingohub
       def resources
         unless defined? @resources
           @resources = { }
-          response = @client.get(self.resources_url)
+          response = @client.get(self.resources_url).force_encoding('UTF-8')
           resource_hash = JSON.parse(response)
           members = resource_hash["members"]
           members.each do |member|
